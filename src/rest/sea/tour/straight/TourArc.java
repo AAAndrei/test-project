@@ -1,4 +1,4 @@
-package rest.sea.tour.arc;
+package rest.sea.tour.straight;
 
 import rest.sea.tour.Tour;
 import rest.sea.transport.BaseTransport;
@@ -6,9 +6,16 @@ import rest.sea.transport.TransportType;
 
 public class TourArc extends Tour {
 
-    public TourArc(BaseTransport baseTransport, int distance) {
-        super(TransportType.AERIAL, baseTransport);
-        this.distance = distance;
+    private final int radius;
+
+    public TourArc(BaseTransport baseTransport, int radius) {
+        super(TransportType.RAILWAY, baseTransport);
+        this.radius = radius;
+        distance = (int)3.14 * radius * 180 / 180;
+    }
+
+    public int getRadius() {
+        return radius;
     }
 
     @Override

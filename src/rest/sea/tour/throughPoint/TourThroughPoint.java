@@ -16,6 +16,7 @@ public class TourThroughPoint extends Tour {
         this.stopTime = stopTime;
         this.firstDistance = firstDistance;
         this.secondDistance = secondDistance;
+        distance = firstDistance + secondDistance;
     }
 
     public int getStopTime() {
@@ -34,13 +35,8 @@ public class TourThroughPoint extends Tour {
         return nameThroughPoint;
     }
 
-    public int distance() {
-        distance = firstDistance + secondDistance;
-        return distance;
-    }
-
     @Override
-    public double timeTour() {
+    public double getTimeTour() {
         timeTour = ((double) distance / getBaseTransport().getSpeed()) + stopTime;
         return timeTour;
     }

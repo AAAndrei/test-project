@@ -34,15 +34,11 @@ public class Tour {
         return baseTransport;
     }
 
-    public double getTimeTour() {
-        return timeTour;
-    }
-
-    public int getDistance() {
+    protected int getDistance() {
         return distance;
     }
 
-    public double timeTour() {
+    public double getTimeTour() {
         timeTour = (double)distance / getBaseTransport().getSpeed();
         return timeTour;
     }

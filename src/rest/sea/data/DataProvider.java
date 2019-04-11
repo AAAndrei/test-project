@@ -1,8 +1,8 @@
 package rest.sea.data;
 
 import rest.sea.tour.Tour;
-import rest.sea.tour.arc.TourArc;
-import rest.sea.tour.straight.TourStraight;
+import rest.sea.tour.arc.TourStraight;
+import rest.sea.tour.straight.TourArc;
 import rest.sea.tour.throughPoint.TourThroughPoint;
 import rest.sea.transport.aircraft.Aircraft;
 import rest.sea.transport.car.Car;
@@ -14,24 +14,20 @@ public class DataProvider implements DataProviderServise {
     @Override
     public Tour[] generatTour() {
 
-        Tour one = new TourArc(new Aircraft(1400), 700);
-        one.timeTour();
+        TourStraight one = new TourStraight(new Aircraft(1400), 700);
+        one.getTimeTour();
 
-        Tour two = new TourStraight(new Plackard(80), 350);
-        ((TourStraight) two).distance();
-        two.timeTour();
+        TourArc two = new TourArc(new Plackard(80), 350);
+        two.getTimeTour();
 
-        Tour three = new TourStraight(new Fast(140), 350);
-        ((TourStraight) three).distance();
-        three.timeTour();
+        TourArc three = new TourArc(new Fast(140), 350);
+        three.getTimeTour();
 
-        Tour four = new TourThroughPoint(new Minibus(60), 1, 350, 400);
-        ((TourThroughPoint) four).distance();
-        four.timeTour();
+        TourThroughPoint four = new TourThroughPoint(new Minibus(60), 1, 350, 400);
+        four.getTimeTour();
 
-        Tour five = new TourThroughPoint(new Car(140), 1, 350, 400);
-        ((TourThroughPoint) five).distance();
-        five.timeTour();
+        TourThroughPoint five = new TourThroughPoint(new Car(140), 1, 350, 400);
+        five.getTimeTour();
 
         Tour[] tours = {
                 one, two, three, four, five,
@@ -40,24 +36,26 @@ public class DataProvider implements DataProviderServise {
         return tours;
     }
 
-    public Tour[] arrayDecay() {
+    @Override
+    public Tour[] descendingSort() {
 
         Tour[] decay = generatTour().clone();
 
-            Tour temp;
-            for (int i =0; i < decay.length - 1; ) {
-                if (decay[i].getTimeTour() < decay[i + 1].getTimeTour()) {
-                    temp = decay[i];
-                    decay[i] = decay[i + 1];
-                    decay[i + 1] = temp;
-                    i = 0;
-                } else {
-                    i++;
-                }
+        Tour temp;
+        for (int i =0; i < decay.length - 1; ) {
+            if (decay[i].getTimeTour() < decay[i + 1].getTimeTour()) {
+                temp = decay[i];
+                decay[i] = decay[i + 1];
+                decay[i + 1] = temp;
+                i = 0;
+            } else {
+                i++;
             }
+        }
         return decay;
     }
 
+    @Override
     public String durationTour(Tour[] tour) {
         int counter = 0;
         for (Tour o : tour) {
