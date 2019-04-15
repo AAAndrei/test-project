@@ -45,6 +45,6 @@ public class Tour {
 
     @Override
     public String toString() {
-        return "Тур: " + transportType + " " + nameStart + " " + nameFinish + " " + timeTour + " " + baseTransport;
+        return "Тур: " + transportType + " " + nameStart + " " + nameFinish + " " + getTimeTour() + " " + baseTransport;
     }
 }
