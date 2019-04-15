@@ -9,7 +9,7 @@ public class Run {
         System.out.println();
         DataProviderServise dataProviderServise = new DataProvider();
         for (Object o : dataProviderServise.generatTour()) {
-            System.out.println(o.toString());
+            System.out.println(o);
         }
         System.out.println();
         for (Object o : dataProviderServise.descendingSort()) {
