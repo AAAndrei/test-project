@@ -15,19 +15,14 @@ public class DataProvider implements DataProviderServise {
     public Tour[] generatTour() {
 
         TourStraight one = new TourStraight(new Aircraft(1400), 700);
-        one.getTimeTour();
 
         TourArc two = new TourArc(new Plackard(80), 350);
-        two.getTimeTour();
 
         TourArc three = new TourArc(new Fast(140), 350);
-        three.getTimeTour();
 
         TourThroughPoint four = new TourThroughPoint(new Minibus(60), 1, 350, 400);
-        four.getTimeTour();
 
         TourThroughPoint five = new TourThroughPoint(new Car(140), 1, 350, 400);
-        five.getTimeTour();
 
         Tour[] tours = {
                 one, two, three, four, five,
